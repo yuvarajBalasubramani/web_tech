@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header, footer {
+            background: #010910;
+            color: #ded960;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background: #84e3e6;
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #070101;
+            text-decoration: none;
+        }
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 20px;
+            max-width: 1200px;
+            padding: 20px;
+        }
+        .sidebar {
+            background: #dea3da;
+            color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .main-content {
+            background: #dea3da;
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        @media (max-width: 768px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sports Website</h1>
+    </header>
+    <nav>
+        <ul>
+            <img src="logo.avif" alt="rounded" width="40" height="30">
+            <li><a href="login.html">Login</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="livescore.html">Live Scores</a></li>
+            <li><a href="tournament.html">Tournaments</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="nav-item dropdown">
+                <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    More
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="#">Football</a></li>
+                    <li><a class="dropdown-item" href="#">Basketball</a></li>
+                    <li><a class="dropdown-item" href="#">Tennis</a></li>
+                    <li><a class="dropdown-item" href="#">Cricket</a></li>
+                    <li><a class="dropdown-item" href="#">Athletics</a></li>
+                </ul>
+            </li>
+            <li>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-info" type="submit">Search</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+    <div class="content-wrapper">
+        <aside class="sidebar">
+            <h3>Upcoming Events</h3>
+            <table class="table table-pink table-striped">
+                <thead>
+                    <tr>
+                        <th>Sport</th>
+                        <th>Date</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Soccer Championship</td>
+                        <td>March 15, 2025</td>
+                        <td>New York Stadium</td>
+                    </tr>
+                    <tr>
+                        <td>Basketball League</td>
+                        <td>April 10, 2025</td>
+                        <td>Los Angeles Arena</td>
+                    </tr>
+                    <tr>
+                        <td>Marathon Run</td>
+                        <td>May 5, 2025</td>
+                        <td>Chicago Park</td>
+                    </tr>
+                </tbody>
+            </table>
+        </aside>
+        <main class="main-content">
+            <h2>Welcome to Sports Website</h2>
+            <p>Your ultimate destination for live scores, tournaments, and sports news.</p>
+            <div class="section">
+                <h3>Latest Matches</h3>
+                <p>Stay up-to-date with live match scores and updates.</p>
+                <ul>
+                    <li>Real-time sports scores from various leagues.</li>
+                    <li>Match highlights and analysis.</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h3>Sports News</h3>
+                <p>Read the latest updates from the sports world.</p>
+                <ul>
+                    <li>Exclusive interviews with players and coaches.</li>
+                    <li>In-depth coverage of major tournaments.</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h3>Local Tournaments</h3>
+                <p>Join or promote your local sports events.</p>
+                <ul>
+                    <li>Register for local competitions.</li>
+                    <li>Find sponsors and supporters.</li>
+                </ul>
+            </div>
+        </main>
+        <aside class="sidebar">
+            <h3>Advertisements</h3>
+            <p>Promote your sports brand here.</p>
+            <button type="button" class="btn btn-primary">Advertise Now</button>
+            <img src="th.jpg">
+            <P>To access the more about sports.</P>
+            <img src="soccer.jpg" width="325" height="150">
+        </aside>
+    </div>
+    <footer>
+        <p>&copy; 2025 Sports Website. All rights reserved .</p>
+    </footer>
+</body>
+</html>
