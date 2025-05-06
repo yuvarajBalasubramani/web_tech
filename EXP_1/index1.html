@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Web Design</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background: #111;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+        }
+        .box {
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+        }
+        .box h1, .box h2 {
+            color: #fefe00;
+        }
+        .box p {
+            font-size: 14px;
+        }
+        .btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: #fefe00;
+            color: black;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h1>STAY CONNECTED</h1>
+            <p>Clean and simple modern template for digital experiences.</p>
+            <a href="#" class="btn">Go</a>
+        </div>
+        <div class="box">
+            <h2>SIMPLE</h2>
+            <p>Minimalist design meets high performance.</p>
+        </div>
+        <div class="box">
+            <img src="gaming-bg.jpg" alt="Skaters" width="100%">
+        </div>
+        <div class="box">
+            <h2>DESIGN</h2>
+            <p>Creating stunning digital products with modern aesthetics.</p>
+        </div>
+    </div>
+</body>
+</html>
