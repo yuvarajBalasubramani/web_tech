@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #c5a0ea;
+        }
+        .container {
+            background: rgb(204, 236, 239);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgb(188, 148, 148);
+            width: 350px;
+        }
+        input, select {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .error.show {
+            opacity: 1;
+        }
+        .password-container {
+            position: relative;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        .strength {
+            font-size: 14px;
+            margin-top: -8px;
+            margin-bottom: 10px;
+        }
+        button {
+            background: rgb(32, 198, 210);
+            color: rgb(11, 1, 1);
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Form Validation</h2>
+        <form id="myForm">
+            <label>First Name *</label>
+            <input type="text" id="firstName" placeholder="Enter First Name">
+            <span class="error" id="firstNameError"></span>
+
+            <label>Last Name *</label>
+            <input type="text" id="lastName" placeholder="Enter Last Name">
+            <span class="error" id="lastNameError"></span>
+
+            <label>Email Id *</label>
+            <input type="email" id="email" placeholder="Enter Email">
+            <span class="error" id="emailError"></span>
+
+            <label>Phone Number *</label>
+            <input type="text" id="phone" placeholder="Enter Phone Number">
+            <span class="error" id="phoneError"></span>
+
+            <label>Gender *</label>
+            <select id="gender">
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+            <span class="error" id="genderError"></span>
+
+            <label>Date of Birth *</label>
+            <input type="date" id="dob">
+            <span class="error" id="dobError"></span>
+
+            <label>Address *</label>
+            <input type="text" id="address" placeholder="Enter Address">
+            <span class="error" id="addressError"></span>
+
+            <label>Password *</label>
+            <div class="password-container">
+                <input type="password" id="password" placeholder="Enter Password">
+                <span class="toggle-password" onclick="togglePassword('password')">👁</span>
+            </div>
+            <span class="strength" id="passwordStrength"></span>
+            <span class="error" id="passwordError"></span>
+
+            <label>Confirm Password *</label>
+            <div class="password-container">
+                <input type="password" id="confirmPassword" placeholder="Confirm Password">
+                <span class="toggle-password" onclick="togglePassword('confirmPassword')">👁</span>
+            </div>
+            <span class="error" id="confirmPasswordError"></span>
+
+            <label>
+                <input type="checkbox" id="terms"> I agree to the Terms & Conditions *
+            </label>
+            <span class="error" id="termsError"></span>
+
+            <button type="submit">submit</button>
+        </form>
+    </div>
+
+    <script>
+        function togglePassword(id) {
+            let input = document.getElementById(id);
+            input.type = input.type === "password" ? "text" : "password";
+        }
+
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let valid = true;
+
+            let fields = ["firstName", "lastName", "email", "phone", "gender", "dob", "address", "password", "confirmPassword", "terms"];
+            let messages = {
+                firstName: "Enter First Name",
+                lastName: "Enter Last Name",
+                email: "Invalid Email Id",
+                phone: "Enter a valid 10-digit phone number",
+                gender: "Please select a gender",
+                dob: "Please enter your date of birth",
+                address: "Address cannot be empty",
+                password: "Password must be at least 6 characters",
+                confirmPassword: "Passwords do not match",
+                terms: "You must agree to the Terms & Conditions"
+            };
+            
+            fields.forEach(field => {
+                let value = document.getElementById(field).type === "checkbox" ? document.getElementById(field).checked : document.getElementById(field).value.trim();
+                let errorSpan = document.getElementById(field + "Error");
+                if (!value || (field === "email" && !value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) || 
+                    (field === "phone" && !value.match(/^\d{10}$/)) || 
+                    (field === "password" && value.length < 6) || 
+                    (field === "confirmPassword" && value !== document.getElementById("password").value)) {
+                    errorSpan.textContent = messages[field];
+                    errorSpan.classList.add("show");
+                    valid = false;
+                } else {
+                    errorSpan.textContent = "";
+                    errorSpan.classList.remove("show");
+                }
+            });
+            
+            if (valid) {
+                alert("Signup successful!");
+                document.getElementById("myForm").reset();
+            }
+        });
+    </script>
+</body>
+</html>
