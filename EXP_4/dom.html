@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Ticket Bill Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #eef2f7;
+            margin: 0;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #2d3436;
+        }
+        select, input, button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+        }
+        .summary {
+            margin-top: 20px;
+            padding: 10px;
+            background: #dff9fb;
+            border-radius: 5px;
+        }
+        .footer {
+            margin-top: 30px;
+            padding: 10px;
+            background-color: #130f40;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+        }
+        .footer a {
+            color: #f0932b;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .promo-message {
+            background-color: #44bd32;
+            padding: 10px;
+            border-radius: 5px;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Football Ticket Bill Calculator</h2>
+        <div class="promo-message">
+            <strong>Use Promo Code "GOAL2024" to get 15% OFF!</strong>
+        </div>
+
+        <label for="matchName">Select Match:</label>
+        <select id="matchName">
+            <option value="FC Barcelona vs Real Madrid">FC Barcelona vs Real Madrid</option>
+            <option value="Manchester United vs Liverpool">Manchester United vs Liverpool</option>
+            <option value="Arsenal vs Chelsea">Arsenal vs Chelsea</option>
+            <option value="Bayern Munich vs Borussia Dortmund">Bayern Munich vs Borussia Dortmund</option>
+        </select>
+
+        <label for="stadiumName">Select Stadium:</label>
+        <select id="stadiumName">
+            <option value="Camp Nou, Barcelona">Camp Nou, Barcelona</option>
+            <option value="Old Trafford, Manchester">Old Trafford, Manchester</option>
+            <option value="Allianz Arena, Munich">Allianz Arena, Munich</option>
+            <option value="Emirates Stadium, London">Emirates Stadium, London</option>
+        </select>
+
+        <label for="ticketType">Select Ticket Type:</label>
+        <select id="ticketType">
+            <option value="600">Standard - ₹600</option>
+            <option value="1200">Premium - ₹1200</option>
+            <option value="2500">VIP - ₹2500</option>
+            <option value="4500">Elite - ₹4500</option>
+        </select>
+
+        <label for="quantity">Enter Number of Tickets:</label>
+        <input type="number" id="quantity" min="1" value="1">
+
+        <label for="promoCode">Enter Promo Code (if any):</label>
+        <input type="text" id="promoCode" placeholder="Enter code">
+
+        <button onclick="calculateBill()">Calculate Bill</button>
+
+        <div class="summary">
+            <h3 id="selectedMatch">Selected Match: None</h3>
+            <h3 id="selectedStadium">Selected Stadium: None</h3>
+            <h3 id="totalBill">Total Bill: ₹0</h3>
+            <p id="discount">Discount Applied: ₹0</p>
+            <p id="finalAmount">Final Amount: ₹0</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Football Ticketing. All rights reserved.</p>
+        <p><a href="#">Contact Us</a> | <a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a></p>
+    </div>
+
+    <script>
+        function calculateBill() {
+            let matchName = document.getElementById('matchName').value;
+            let stadiumName = document.getElementById('stadiumName').value;
+            let ticketPrice = parseInt(document.getElementById('ticketType').value);
+            let quantity = parseInt(document.getElementById('quantity').value);
+            let promoCode = document.getElementById('promoCode').value.trim().toUpperCase();
+            
+            if (quantity < 1) {
+                alert("Please enter a valid number of tickets.");
+                return;
+            }
+
+            let total = ticketPrice * quantity;
+            let discount = 0;
+
+            if (promoCode === "GOAL2024") {
+                discount = total * 0.15;
+            }
+
+            let finalAmount = total - discount;
+
+            document.getElementById('selectedMatch').innerText = "Selected Match: " + matchName;
+            document.getElementById('selectedStadium').innerText = "Selected Stadium: " + stadiumName;
+            document.getElementById('totalBill').innerText = "Total Bill: ₹" + total;
+            document.getElementById('discount').innerText = "Discount Applied: ₹" + discount.toFixed(2);
+            document.getElementById('finalAmount').innerText = "Final Amount: ₹" + finalAmount.toFixed(2);
+        }
+    </script>
+</body>
+</html>
